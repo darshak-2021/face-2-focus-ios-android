@@ -50,3 +50,10 @@ Here every time when application is loaded or Open the spiritual quotation will 
 Reference - https://www.youtube.com/watch?v=H0CC1UsvjDQ&t=149s
 To make splash screen make sure you are aware about the some native component of ios native development like some shift.
 Official - https://www.npmjs.com/package/react-native-splash-screen
+
+## Splash Screen for Android
+Android native concept clear before making splash into android Studio 
+some React native specific thing require to put into native environment
+Reference - https://www.youtube.com/watch?v=yFrx8HZlNtI
+
+
