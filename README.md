@@ -41,11 +41,12 @@ Images source - Screen Shots
 ## Quotation Screen
 
 Here every time when application is loaded or Open the spiritual quotation will be change and heal your mind with positive energy.
-
 # android
-
 ![](src/Markdown/Quotation-Android.png)
-
 # iOS
-
 ![](src/Markdown/Quotation-iOS.png)
+
+## Splash Screen for Ios
+Reference - https://www.youtube.com/watch?v=H0CC1UsvjDQ&t=149s
+To make splash screen make sure you are aware about the some native component of ios native development like some shift.
+Official - https://www.npmjs.com/package/react-native-splash-screen
