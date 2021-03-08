@@ -14,5 +14,14 @@ This Project is for learning and Third year project development purpose. Mainly 
 3. Google Firebase - To store media like audio and some more infomation of users.
 
 ### Setting Project Environment for React Native ( Link are Provided for References)
-TypeScript - https://www.typescriptlang.org
+TypeScript - https://www.typescriptlang.org 
+
 React-Native with TypeScript - https://reactnative.dev/docs/typescript#getting-started-with-typescript
+
+### Initial Look up of React Native Application - cryptocurrency
+Images source - Screen Shots
+# android
+![alt text]('./node_modules/amarkdown-images/Default-Android.png')
+# iOS
+![alt text]('./node_modules/amarkdown-images/Default-iOS.png')
+
