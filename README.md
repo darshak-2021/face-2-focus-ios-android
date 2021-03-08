@@ -25,3 +25,11 @@ Images source - Screen Shots
 # iOS
 ![](src/Markdown/Default-Android.png)
 
+## Quotation Screen
+Here every time when application is loaded or Open the spiritual quotation will be change and heal your mind with positive energy.
+
+
+
+
+
+
