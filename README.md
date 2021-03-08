@@ -21,7 +21,7 @@ React-Native with TypeScript - https://reactnative.dev/docs/typescript#getting-s
 ### Initial Look up of React Native Application - cryptocurrency
 Images source - Screen Shots
 # android
-![alt text]('./src/Markdown/Default-Android.png')
+![](src/Markdown/Default-Android.png)
 # iOS
-![alt text]('./src/Markdown/Default-iOS.png')
+![](src/Markdown/Default-Android.png)
 
