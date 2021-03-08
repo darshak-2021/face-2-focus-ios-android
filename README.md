@@ -1,4 +1,4 @@
-#face-2-focus-ios-android GuideLine to Project Journey 
+# face-2-focus-ios-android GuideLine to Project Journey 
 
 ## Introduction to the Face2Focus - Using Facial Expression Recognition to Meditate 
 Facial Emotion Recognition ( FER ) to meditation Suggestion Cross-Platform Mobile Application using React-Native for UI, Google Firebase for Storage, and AWS for Image Analysis 😃😃😇
@@ -21,7 +21,7 @@ React-Native with TypeScript - https://reactnative.dev/docs/typescript#getting-s
 ### Initial Look up of React Native Application - cryptocurrency
 Images source - Screen Shots
 # android
-![alt text]('./node_modules/amarkdown-images/Default-Android.png')
+![alt text]('./src/Markdown/Default-Android.png')
 # iOS
-![alt text]('./node_modules/amarkdown-images/Default-iOS.png')
+![alt text]('./src/Markdown/Default-iOS.png')
 
