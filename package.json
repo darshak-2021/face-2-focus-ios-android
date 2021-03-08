@@ -1,4 +1,9 @@
 {
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts"
+    ]
+  },
   "name": "face2focusios",
   "version": "0.0.1",
   "private": true,
@@ -27,3 +32,4 @@
     "preset": "react-native"
   }
 }
+
