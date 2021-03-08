@@ -56,4 +56,8 @@ Android native concept clear before making splash into android Studio
 some React native specific thing require to put into native environment
 Reference - https://www.youtube.com/watch?v=yFrx8HZlNtI
 
+## Login Screen 
+Using Button user will log in and log out by using google firebase
+*** Functionality Remain *** 
+
 
