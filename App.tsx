@@ -12,6 +12,7 @@ import SplashScreen from 'react-native-splash-screen';
 // Mobile Pages
 import QuotationPage from './src/pages/QuotationPage';
 import LoginPage from './src/pages/LoginPage';
+import Home from './src/pages/HomePage';
 
 class App extends Component {
 
@@ -22,7 +23,8 @@ class App extends Component {
     return (
       <View style={styles.screenContainer}>
         {/* <QuotationPage /> */}
-        <LoginPage/>
+        {/* <LoginPage/> */}
+        <Home/>
       </View>
     );
   }
