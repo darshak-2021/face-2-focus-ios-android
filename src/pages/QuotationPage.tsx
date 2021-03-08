@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1F232E',
   },
   imageContainer: {
-    marginVertical: Platform.OS === 'ios' ? 40 : 5,
+    marginVertical: Platform.OS === 'ios' ? 45 : 5,
   },
   quoteContainer: {
     alignItems: 'center',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   manualInfo: {
     fontFamily: 'SFUIDisplay-Semibold',
-    fontSize: 18,
+    fontSize: 17,
   },
 });
 
