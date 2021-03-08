@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway-Bold',
   },
   manualInfoContainer: {
-    paddingVertical: Platform.OS === 'android' ? 130 : 140,
+    paddingVertical: Platform.OS === 'android' ? 105 : 140,
     position: 'relative',
   },
   manualInfo: {
