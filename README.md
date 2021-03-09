@@ -60,4 +60,13 @@ Reference - https://www.youtube.com/watch?v=yFrx8HZlNtI
 Using Button user will log in and log out by using google firebase
 *** Functionality Remain *** 
 
+## Home Tentative Screen View
+Home Screen will show us the how much minites you have been meditate 
+### Android
+![](src/Markdown/Home-Android.png)
+### iOS
+![](src/Markdown/Home-iOS.png)
+
+
+
 
