@@ -48,7 +48,7 @@ const Profile = () => {
         </ImageBackground>
       </View>
 
-      <View style={{flexDirection: 'row', marginLeft: 5, marginVertical: 20}}>
+      <View style={{flexDirection: 'row', marginLeft: 32, marginVertical: 20}}>
         <Icon name="add-circle" size={Platform.OS === 'ios' ? 25 : 20} color={Colors.white} />
         <View style={{justifyContent: 'center'}}>
           <Text style={styles.libraryContainer}>My Library</Text>
@@ -63,7 +63,7 @@ const Profile = () => {
           <View style={styles.favMainOuter}>
             <View style={styles.favRowAlignment}>
               <View style={styles.heartOutline}>
-                <IconFav name="favorite" size={32} color="#fb3958" />
+                <IconFav name="favorite" size={32} color="#FA2245" />
               </View>
               <Text style={styles.favTextContent}>Favorites</Text>
               <Icon
@@ -81,8 +81,6 @@ const Profile = () => {
           title="Logout"
           style={{
             color: Colors.white,
-            fontSize: 18,
-            fontFamily: 'Raleway-Bold',
           }}
           onClickButtonHandler = {() => Alert.alert('You are Signing Out....')}
         />
