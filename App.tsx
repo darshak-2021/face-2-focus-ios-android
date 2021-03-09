@@ -14,6 +14,7 @@ import QuotationPage from './src/pages/QuotationPage';
 import LoginPage from './src/pages/LoginPage';
 import Home from './src/pages/HomePage';
 import MeditationList from './src/pages/MeditationListAudios';
+import UserProfile from './src/pages/UserProfilePage';
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,8 @@ class App extends Component {
         {/* <QuotationPage /> */}
         {/* <LoginPage/> */}
         {/* <Home/> */}
-        <MeditationList />
+        {/* <MeditationList /> */}
+        <UserProfile />
       </View>
     );
   }
