@@ -18,6 +18,7 @@ import UserProfile from './src/pages/UserProfilePage';
 import BeginSessionPage from './src/pages/AudioBeginPage';
 import CameraModule from './src/pages/CameraModulePage';
 import UserSnapScreen from './src/pages/UserPictureSnapPage';
+import AudioPlayerController from './src/pages/AudioPlayerController';
 class App extends Component {
   componentDidMount() {
     SplashScreen.hide();
@@ -32,7 +33,8 @@ class App extends Component {
         {/* <UserProfile /> */}
         {/* <BeginSessionPage /> */}
         {/* <CameraModule /> */}
-        <UserSnapScreen/>
+        {/* <UserSnapScreen/> */}
+        <AudioPlayerController/>
       </View>
     );
   }
