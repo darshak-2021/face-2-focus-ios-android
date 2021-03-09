@@ -71,6 +71,19 @@ Home Screen will show us the how much minites you have been meditate ### Android
 ### iOS
 ![](src/Markdown/Home-Android.png)
 
+## Meditation Audio List Screen
+This is the Resulting Screen which will diplay after image is been analysis base on the mood respective data will render into these same UI Screens
+
+DATA Fetching - 
+GIF - MainTitle - subTitle - AudioTitle, Image, Label, Minutes etc. for each Audio player all the content is different base on the persons mood.
+for instance, This is the Static example of Happy mood emotions.
+### Android
+
+![](src/Markdown/Meditation-Android.png)
+
+### iOS
+![](src/Markdown/Meditation-iOS.png)
+
 
 
 
