@@ -15,7 +15,8 @@ import LoginPage from './src/pages/LoginPage';
 import Home from './src/pages/HomePage';
 import MeditationList from './src/pages/MeditationListAudios';
 import UserProfile from './src/pages/UserProfilePage';
-import BeginSessionPage from './src/pages/AudioBeginPage'
+import BeginSessionPage from './src/pages/AudioBeginPage';
+import CameraModule from './src/pages/CameraModulePage';
 class App extends Component {
   componentDidMount() {
     SplashScreen.hide();
@@ -28,7 +29,8 @@ class App extends Component {
         {/* <Home/> */}
         {/* <MeditationList /> */}
         {/* <UserProfile /> */}
-        <BeginSessionPage/>
+        {/* <BeginSessionPage /> */}
+        <CameraModule />
       </View>
     );
   }
