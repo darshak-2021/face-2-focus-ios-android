@@ -21,18 +21,19 @@ const BeginButton = (props: any) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     borderWidth: 0,
-    width: 380,
+    width: 350,
     borderColor: Colors.white,
     borderRadius: 25,
     padding: 12,
     backgroundColor: Colors.button,
     alignItems: 'center',
     marginTop: 32,
+    
   },
   button: {
     color: 'black',
-    fontSize: 17,
-    fontFamily: 'Raleway-Regular',
+    fontSize: 18,
+    fontFamily: 'SFUIDisplay-Medium',
   },
 });
 export default BeginButton;
