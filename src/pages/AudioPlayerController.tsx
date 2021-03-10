@@ -13,7 +13,7 @@ import IconIoni from 'react-native-vector-icons/Ionicons';
 import IconEnty from 'react-native-vector-icons/Entypo';
 import Colors from '../constant/Colors';
 import {SESSIONDETAIL} from '../data/dummyData';
-const BeginScreenSession = (props:any) => {
+const BeginScreenSession = (props: any) => {
   const [toggleController, setToggleController] = useState(false);
   const [toggleHeart, setToggleHeart] = useState(false);
 
@@ -42,7 +42,11 @@ const BeginScreenSession = (props:any) => {
   };
   return (
     <View style={styles.screen}>
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StatusBar
+        translucent={true}
+        backgroundColor={'transparent'}
+        barStyle="light-content"
+      />
       {/* This Should be Fetch from the server -- Perticular image will display at 
             background
         */}
@@ -50,7 +54,10 @@ const BeginScreenSession = (props:any) => {
         style={styles.image}
         source={require('../assets/images/audio-image/List1.jpg')}
         imageStyle={{opacity: 0.3}}>
-        <TouchableOpacity style={styles.backContainer} activeOpacity={0.8} onPress={() => props.navigation.navigate("Meditation")}>
+        <TouchableOpacity
+          style={styles.backContainer}
+          activeOpacity={0.8}
+          onPress={() => props.navigation.navigate('Meditation')}>
           {backButton}
         </TouchableOpacity>
         <View style={styles.mainContainer}>
