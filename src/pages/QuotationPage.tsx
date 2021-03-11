@@ -18,7 +18,7 @@ const QuotationScreen = (props: any) => {
   const color = Colors.textWhiteaccent;
 
   return (
-    <TouchableWithoutFeedback onPress={() => {}}>
+    <TouchableWithoutFeedback onPress={() => props.navigation.navigate('LoginModule')}>
       <View style={styles.quoteScreenContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#1F232E" />
         <View style={styles.imageContainer}>
