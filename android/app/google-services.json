@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "510250510237",
+    "project_id": "face2focus-9f200",
+    "storage_bucket": "face2focus-9f200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510250510237:android:307fdf7b6c5d7b9a433174",
+        "android_client_info": {
+          "package_name": "com.face2focusios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510250510237-dds8kmo22tn03l462ao2dvkii99uot63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhb8eoA4k3OMq-NyikxpF2ugaovBBUfvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510250510237-dds8kmo22tn03l462ao2dvkii99uot63.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "510250510237-5i3v57ohnfi9p9q6e3hn4r4npm5fkida.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.face2focus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
