@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import Colors from '../constant/Colors';
-
+import GoogleSocialButton from '../components/GoogleSocialButton';
 
 const backImageFront = require('../assets/images/mountain.jpg');
 const topIconFront = require('../assets/images/login-icon/logo.png');
@@ -45,9 +45,26 @@ const LoginScreen = (props: any) => {
         </View>
 
         <View style={styles.buttonContainer}>
-          {/* <TouchableWithoutFeedback> */}
+          <TouchableWithoutFeedback>
             {/* Google Login Comes under here - Functionality of BackEnd */}
-          {/* </TouchableWithoutFeedback> */}
+
+            <GoogleSocialButton
+              buttonTitle="Sign In with Google"
+              btnType="google"
+              color="#de4d41"
+              backgroundColor="rgba(255,255,255,0.5)"
+              onPress={() => {}}
+            />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>
+            <GoogleSocialButton
+              buttonTitle="Sign In with Facebook"
+              btnType="facebook"
+              color="#4867aa"
+              backgroundColor="rgba(255,255,255,0.5)"
+              onPress={() => {}}
+            />
+          </TouchableWithoutFeedback>
         </View>
       </ImageBackground>
     </View>
