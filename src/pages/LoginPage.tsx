@@ -11,13 +11,31 @@ import {
 } from 'react-native';
 
 import Colors from '../constant/Colors';
-import GoogleSocialButton from '../components/GoogleSocialButton';
+import SocialButton from '../components/SocialButton';
 
 const backImageFront = require('../assets/images/mountain.jpg');
 const topIconFront = require('../assets/images/login-icon/logo.png');
 
 const LoginScreen = (props: any) => {
   const color = Colors.textWhiteaccent;
+  const loginMode =
+    Platform.OS === 'android' ? (
+      <SocialButton
+        buttonTitle="Sign In with Facebook"
+        btnType="facebook"
+        color="#4867aa"
+        backgroundColor="rgba(255,255,255,0.5)"
+        onPress={() => {}}
+      />
+    ) : (
+      <SocialButton
+        buttonTitle="Sign In with Apple"
+        btnType="apple"
+        color="#ffffff"
+        backgroundColor="rgba(0,0,0,0.5)"
+        onPress={() => {}}
+      />
+    );
 
   return (
     <View style={styles.screen}>
@@ -48,7 +66,7 @@ const LoginScreen = (props: any) => {
           <TouchableWithoutFeedback>
             {/* Google Login Comes under here - Functionality of BackEnd */}
 
-            <GoogleSocialButton
+            <SocialButton
               buttonTitle="Sign In with Google"
               btnType="google"
               color="#de4d41"
@@ -56,15 +74,7 @@ const LoginScreen = (props: any) => {
               onPress={() => {}}
             />
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <GoogleSocialButton
-              buttonTitle="Sign In with Facebook"
-              btnType="facebook"
-              color="#4867aa"
-              backgroundColor="rgba(255,255,255,0.5)"
-              onPress={() => {}}
-            />
-          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>{loginMode}</TouchableWithoutFeedback>
         </View>
       </ImageBackground>
     </View>
