@@ -16,6 +16,8 @@ import Button from '../components/Button';
 
 import Colors from '../constant/Colors';
 
+import signOut from '../utils/signingOut';
+
 const Profile = () => {
   return (
     <View style={styles.screen}>
@@ -82,7 +84,7 @@ const Profile = () => {
           style={{
             color: Colors.white,
           }}
-          onClickButtonHandler = {() => Alert.alert('You are Signing Out....')}
+          onClickButtonHandler = {() => signOut()}
         />
       </View>
     </View>
