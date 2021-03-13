@@ -14,6 +14,7 @@ const SocialButton = ({
   let bgColor = backgroundColor;
   return (
     <TouchableOpacity
+    activeOpacity={0.6}
       style={[styles.buttonContainer, {backgroundColor: bgColor}]}
       {...rest}>
       <View style={styles.iconWrapper}>
@@ -30,12 +31,12 @@ export default SocialButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    marginTop: 10,
+    marginVertical: 10,
     width: '90%',
     height: windowHeight / 15,
-    padding: 10,
+    padding: 20,
     flexDirection: 'row',
-    borderRadius: 3,
+    borderRadius: 40,
   },
   iconWrapper: {
     width: 30,
