@@ -20,11 +20,21 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.510250510237-n91il3di5280g0v2udp6uvi9jchuofsh</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -38,69 +48,57 @@
 			</dict>
 		</dict>
 	</dict>
-
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
-
-	<!-- Required with iOS 10 and higher -->
 	<key>NSCameraUsageDescription</key>
 	<string>Your message to user when the camera is accessed for the first time</string>
-
-	<!-- Required with iOS 11 and higher: include this only if you are planning to use the camera roll -->
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
-
-	<!-- Include this only if you are planning to use the camera roll -->
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
-
-	<!-- Include this only if you are planning to use the microphone for video recording -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Your message to user when the microphone is accessed for the first time</string>
-
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
 	<key>UIAppFonts</key>
 	<array>
-	<string>AntDesign.ttf</string>
-	<string>Entypo.ttf</string>
-	<string>EvilIcons.ttf</string>
-	<string>Feather.ttf</string>
-	<string>FontAwesome.ttf</string>
-	<string>FontAwesome5_Brands.ttf</string>
-	<string>FontAwesome5_Regular.ttf</string>
-	<string>FontAwesome5_Solid.ttf</string>
-	<string>Foundation.ttf</string>
-	<string>Ionicons.ttf</string>
-	<string>MaterialIcons.ttf</string>
-	<string>MaterialCommunityIcons.ttf</string>
-	<string>SimpleLineIcons.ttf</string>
-	<string>Octicons.ttf</string>
-	<string>Zocial.ttf</string>
-
-	<string>SFUIDisplay-Black.otf</string>
-	<string>SFUIDisplay-Bold.ttf</string>
-	<string>SFUIDisplay-Heavy.otf</string>
-	<string>SFUIDisplay-Light.ttf</string>
-	<string>SFUIDisplay-Medium.otf</string>
-	<string>SFUIDisplay-Regular.otf</string>
-	<string>SFUIDisplay-Semibold.otf</string>
-	<string>SFUIDisplay-Thin.otf</string>
-	<string>SFUIDisplay-Ultralight.otf</string>
-	<string>OpenSans-Bold.ttf</string>
-	<string>OpenSans-BoldItalic.ttf</string>
-	<string>OpenSans-Italic.ttf</string>
-	<string>OpenSans-Light.ttf</string>
-	<string>OpenSans-LightItalic.ttf</string>
-	<string>OpenSans-Regular.ttf</string>
-	<string>Raleway-Black.ttf</string>
-	<string>Raleway-Bold.ttf</string>
-	<string>Raleway-BoldItalic.ttf</string>
-	<string>Raleway-Italic.ttf</string>
-	<string>Raleway-Light.ttf</string>
-	<string>Raleway-Regular.ttf</string>
-	<string>Raleway-Thin.ttf</string>
-	<string>Raleway-ThinItalic.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>SFUIDisplay-Black.otf</string>
+		<string>SFUIDisplay-Bold.ttf</string>
+		<string>SFUIDisplay-Heavy.otf</string>
+		<string>SFUIDisplay-Light.ttf</string>
+		<string>SFUIDisplay-Medium.otf</string>
+		<string>SFUIDisplay-Regular.otf</string>
+		<string>SFUIDisplay-Semibold.otf</string>
+		<string>SFUIDisplay-Thin.otf</string>
+		<string>SFUIDisplay-Ultralight.otf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-BoldItalic.ttf</string>
+		<string>OpenSans-Italic.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-LightItalic.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>Raleway-Black.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-BoldItalic.ttf</string>
+		<string>Raleway-Italic.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-Thin.ttf</string>
+		<string>Raleway-ThinItalic.ttf</string>
 	</array>
-
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
