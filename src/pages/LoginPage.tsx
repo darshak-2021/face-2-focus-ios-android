@@ -163,7 +163,7 @@ const LoginScreen = (props: any) => {
         btnType="facebook"
         color="#4867aa"
         backgroundColor="rgba(255,255,255,0.5)"
-        onPress={() => {}}
+        onPress={() => props.navigation.navigate('CameraModule')}
       />
     ) : (
       <SocialButton
@@ -171,7 +171,7 @@ const LoginScreen = (props: any) => {
         btnType="apple"
         color="#ffffff"
         backgroundColor="rgba(0,0,0,0.5)"
-        onPress={() => {}}
+        onPress={() => props.navigation.navigate('CameraModule')}
       />
     );
 
