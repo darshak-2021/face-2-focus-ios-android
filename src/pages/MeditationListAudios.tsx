@@ -80,7 +80,7 @@ const Meditation = (props: any) => {
             sessionHeader={SESSIONDETAIL[0].sessionHeader}
             mode={SESSIONDETAIL[0].modeOfSession}
             duration={SESSIONDETAIL[0].duration}
-            onclick={() => {}}
+            onclick={() => props.navigation.navigate('AudioBegin')}
           />
           <AudioPlayer
             image={require('../assets/images/audio-image/List2.jpg')}
