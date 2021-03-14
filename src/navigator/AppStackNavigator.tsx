@@ -3,9 +3,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import QuotationgPage from '../pages/QuotationPage';
 
-import LoginModule from '../pages/Auth/LoginPage';
+import LoginModule from '../pages/LoginPage';
 
 import SignUpPage from '../pages/Auth/SignUpPage';
+
+import UserProfilePage from '../pages/UserProfilePage'
 
 
 const Stack = createStackNavigator();
@@ -26,6 +28,11 @@ const AppStacknavigator = () => {
       <Stack.Screen
         name="SignUpModule"
         component={SignUpPage}
+        options={({navigation}) => ({headerShown: false})}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfilePage}
         options={({navigation}) => ({headerShown: false})}
       />
     </Stack.Navigator>
