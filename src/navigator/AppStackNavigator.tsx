@@ -5,9 +5,17 @@ import QuotationgPage from '../pages/QuotationPage';
 
 import LoginModule from '../pages/LoginPage';
 
-import SignUpPage from '../pages/Auth/SignUpPage';
+import CameraModulePage from '../pages/CameraModulePage';
 
-import UserProfilePage from '../pages/UserProfilePage'
+import UserProfilePage from '../pages/UserProfilePage';
+
+import UserPictureSnapPage from '../pages/UserPictureSnapPage';
+
+import MeditationListAudios from '../pages/MeditationListAudios';
+
+import AudioBeginPage from '../pages/AudioBeginPage';
+
+import AudioPlayerController from '../pages/AudioPlayerController';
 
 
 const Stack = createStackNavigator();
@@ -26,14 +34,29 @@ const AppStacknavigator = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="SignUpModule"
-        component={SignUpPage}
+        name="CameraModule"
+        component={CameraModulePage}
         options={({navigation}) => ({headerShown: false})}
       />
       <Stack.Screen
-        name="UserProfile"
-        component={UserProfilePage}
-        options={({navigation}) => ({headerShown: false})}
+        name="UserPictureSnap"
+        component={UserPictureSnapPage}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
+      <Stack.Screen
+        name="MeditationListAudios"
+        component={MeditationListAudios}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
+      <Stack.Screen
+        name="AudioBegin"
+        component={AudioBeginPage}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
+       <Stack.Screen
+        name="AudioPlayerController"
+        component={AudioPlayerController}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
       />
     </Stack.Navigator>
   );

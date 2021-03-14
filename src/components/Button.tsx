@@ -11,7 +11,7 @@ import Colors from '../constant/Colors';
 
 const BeginButton = (props: any) => {
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={props.onClickButtonHandler}>
+    <TouchableOpacity activeOpacity={0.9} onPress={props.onClickButtonHandler}>
       <View style={styles.buttonContainer}>
         <Text style={{...styles.button, ...props.style}}>{props.title}</Text>
       </View>

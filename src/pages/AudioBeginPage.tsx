@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, ImageBackground, StyleSheet, Text, Platform, StatusBar} from 'react-native';
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  Platform,
+  StatusBar,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIoni from 'react-native-vector-icons/Ionicons';
 import IconFav from 'react-native-vector-icons/MaterialIcons';
@@ -8,9 +15,14 @@ import Button from '../components/Button';
 import Colors from '../constant/Colors';
 
 import {SESSIONDETAIL} from '../data/dummyData';
-const BeginScreenSession = () => {
+import {TouchableOpacity} from 'react-native-gesture-handler';
+const BeginScreenSession = (props: any) => {
   const backButton = (
-    <IconIoni name="chevron-back-outline" size={30} color={Colors.white} />
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => props.navigation.navigate('MeditationListAudios')}>
+      <IconIoni name="chevron-back-outline" size={30} color={Colors.white} />
+    </TouchableOpacity>
   );
   const reminder = <Icon name="alarm" size={35} color={Colors.white} />;
   const share = <IconIoni name="share-social" size={35} color={Colors.white} />;
@@ -28,9 +40,13 @@ const BeginScreenSession = () => {
         imageStyle={{opacity: 0.3}}>
         <View style={styles.backContainer}>{backButton}</View>
         <View style={styles.mainContainer}>
-          <Text style={styles.mainHeaderText}>{SESSIONDETAIL[0].sessionHeader}</Text>
+          <Text style={styles.mainHeaderText}>
+            {SESSIONDETAIL[0].sessionHeader}
+          </Text>
           <View style={styles.textLabelView}>
-            <Text style={styles.textLabel}>{SESSIONDETAIL[0].modeOfSession}</Text>
+            <Text style={styles.textLabel}>
+              {SESSIONDETAIL[0].modeOfSession}
+            </Text>
           </View>
 
           <View style={styles.symbolContainer}>
@@ -55,7 +71,12 @@ const BeginScreenSession = () => {
               </View>
             </View>
           </View>
-          <Button title="Begin Sesssion"/>
+          <Button
+            title="Begin Sesssion"
+            onClickButtonHandler={() =>
+              props.navigation.navigate('AudioPlayerController')
+            }
+          />
         </View>
       </ImageBackground>
     </View>

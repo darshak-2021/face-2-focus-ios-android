@@ -23,8 +23,7 @@ const UserSnapScreen = (props: any) => {
         barStyle="light-content"
       />
       <ImageBackground
-        // source={{uri: props.route.params.uri}}
-        source={require('../assets/images/rever.jpg')}
+        source={{uri: props.route.params.uri}}
         style={styles.image}>
         <TouchableOpacity
           style={styles.closeContainer}
@@ -34,12 +33,13 @@ const UserSnapScreen = (props: any) => {
         </TouchableOpacity>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity activeOpacity={0.9} onPress={() => {}}>
-            <Button
-              title="Find Meditation"
-              style={styles.buttonTextContainer}
-            />
-          </TouchableOpacity>
+          <Button
+            title="Find Meditation"
+            style={styles.buttonTextContainer}
+            onClickButtonHandler={() =>
+              props.navigation.navigate('MeditationListAudios')
+            }
+          />
         </View>
       </ImageBackground>
     </View>
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   closeContainer: {
-    marginRight: Platform.OS === 'android'? 340 : 360,
-    marginTop: Platform.OS === 'android'?30:40,
+    marginRight: Platform.OS === 'android' ? 340 : 360,
+    marginTop: Platform.OS === 'android' ? 30 : 40,
   },
   buttonContainer: {
     flex: 1,
