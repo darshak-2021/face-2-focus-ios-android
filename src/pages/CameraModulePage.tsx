@@ -33,7 +33,9 @@ const Camera = (props: any) => {
   //   setCapturedImage(photo);
   // };
 
-{/* Old Method to Toggle Image */}  
+  {
+    /* Old Method to Toggle Image */
+  }
 
   const takePicture = async () => {
     if (camera) {
@@ -45,6 +47,7 @@ const Camera = (props: any) => {
       };
       const data = await camera.current.takePictureAsync(options);
       console.log(data.uri);
+      props.navigation.navigate('UserPictureSnap', {uri: data.uri});
     }
   };
 
@@ -74,75 +77,75 @@ const Camera = (props: any) => {
   return (
     <View style={styles.container}>
       <StatusBar translucent={true} backgroundColor={'transparent'} />
-        <RNCamera
-          ref={camera}
-          style={styles.preview}
-          type={cameraType}
-          flashMode={cameraFlash}
-          autoFocus={RNCamera.Constants.AutoFocus.on}
-          autoFocusPointOfInterest={{x: 0.5, y: 0.5}}
-          ratio="18:9"
-          captureAudio={false}
-          onDoubleTap={() => flipsCameraType()}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use Face2Focus camera',
-            message: 'Face2Focus need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: 'Permission to use audio recording',
-            message: 'Face2Focus need your permission to use your audio',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}>
-          <View style={styles.managerContainer}>
-            {/* Flash Icons UI */}
-            <View style={styles.flashContainer}>
-              <TouchableOpacity onPress={() => toggleCameraFlash()}>
-                <View
-                  style={{
-                    backgroundColor: 'rgba(0,0,0,0.2)',
-                    height: 40,
-                    width: 40,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 20,
-                  }}>
-                  {ternary}
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            {/* Camera Picture Taker Icons UI */}
-            <View style={styles.cameraContainer}>
-              <TouchableOpacity onPress={() => takePicture()}>
-                <View style={styles.takeAnImage}></View>
-              </TouchableOpacity>
-            </View>
-
-            {/* Flip Camera View Icons UI */}
-            <View style={styles.flipContainer}>
-              <TouchableOpacity onPress={() => flipsCameraType()}>
-                <View
-                  style={{
-                    backgroundColor: 'rgba(0,0,0,0.2)',
-                    height: 40,
-                    width: 40,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 20,
-                  }}>
-                  <Icon
-                    size={30}
-                    color={Colors.white}
-                    name="flip-camera-android"
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
+      <RNCamera
+        ref={camera}
+        style={styles.preview}
+        type={cameraType}
+        flashMode={cameraFlash}
+        autoFocus={RNCamera.Constants.AutoFocus.on}
+        autoFocusPointOfInterest={{x: 0.5, y: 0.5}}
+        ratio="18:9"
+        captureAudio={false}
+        onDoubleTap={() => flipsCameraType()}
+        androidCameraPermissionOptions={{
+          title: 'Permission to use Face2Focus camera',
+          message: 'Face2Focus need your permission to use your camera',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}
+        androidRecordAudioPermissionOptions={{
+          title: 'Permission to use audio recording',
+          message: 'Face2Focus need your permission to use your audio',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}>
+        <View style={styles.managerContainer}>
+          {/* Flash Icons UI */}
+          <View style={styles.flashContainer}>
+            <TouchableOpacity onPress={() => toggleCameraFlash()}>
+              <View
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0.2)',
+                  height: 40,
+                  width: 40,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 20,
+                }}>
+                {ternary}
+              </View>
+            </TouchableOpacity>
           </View>
-        </RNCamera>
+
+          {/* Camera Picture Taker Icons UI */}
+          <View style={styles.cameraContainer}>
+            <TouchableOpacity onPress={() => takePicture()}>
+              <View style={styles.takeAnImage}></View>
+            </TouchableOpacity>
+          </View>
+
+          {/* Flip Camera View Icons UI */}
+          <View style={styles.flipContainer}>
+            <TouchableOpacity onPress={() => flipsCameraType()}>
+              <View
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0.2)',
+                  height: 40,
+                  width: 40,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 20,
+                }}>
+                <Icon
+                  size={30}
+                  color={Colors.white}
+                  name="flip-camera-android"
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </RNCamera>
     </View>
   );
 };

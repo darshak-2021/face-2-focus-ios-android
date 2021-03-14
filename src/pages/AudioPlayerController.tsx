@@ -57,7 +57,7 @@ const BeginScreenSession = (props: any) => {
         <TouchableOpacity
           style={styles.backContainer}
           activeOpacity={0.8}
-          onPress={() => props.navigation.navigate('Meditation')}>
+          onPress={() => props.navigation.navigate('MeditationListAudios')}>
           {backButton}
         </TouchableOpacity>
         <View style={styles.mainContainer}>
