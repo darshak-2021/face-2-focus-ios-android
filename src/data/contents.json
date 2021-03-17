@@ -1,0 +1,44 @@
+{
+    "happy": {
+        "name": "You are happy",
+        "title": "title",
+        "description": "description",
+        "gif": "gif url",
+        "media": [
+            {
+                "image": "Image",
+                "title": "Title",
+                "mode": "Mode",
+                "duration": "Duration",
+                "mediaUrl": "Audio URL"
+            },
+            {
+                "image": "Image",
+                "title": "Title",
+                "mode": "Mode",
+                "duration": "Duration",
+                "mediaUrl": "Audio URL"
+            }
+        ]
+    },
+    "sad": {
+        "name": "You are happy",
+        "title": "title",
+        "description": "description",
+        "gif": "gif url",
+        "media": [
+            {
+                "image": "Image",
+                "title": "Title",
+                "mode": "Mode",
+                "duration": "Duration",
+                "mediaUrl": "Audio URL"
+            }
+        ]
+    }
+}
+
+
+response = "happy"
+data["happy"]
+data.happy;
