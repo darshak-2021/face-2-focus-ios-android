@@ -36,7 +36,7 @@
 		BA3954086EA94B2BBA17C0D1 /* SFUIDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B41CBCD696DE411B86AB09C9 /* SFUIDisplay-Bold.ttf */; };
 		BEF81128A84345F3BD54832E /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65746E946E0F40A286BFAE3F /* Raleway-Italic.ttf */; };
 		C36D13D92823477288D1E6FF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9FB70E330A44BA88F384C44 /* OpenSans-Italic.ttf */; };
-		C7BC9CE125FB238F00E64296 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7BC9CE025FB238F00E64296 /* GoogleService-Info.plist */; };
+		C7EEAF9B2602533800855120 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7EEAF9A2602533800855120 /* GoogleService-Info.plist */; };
 		CCF67564AE1E4F08880FAE50 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D2B05B21B14691AEF5B333 /* OpenSans-Bold.ttf */; };
 		D8736B5BE7194071AD0551B9 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EAF57DAF51B84EC18CD7A414 /* SFUIDisplay-Thin.otf */; };
 		DA5644A99B7DF616172D8DEA /* libPods-face2focusios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5C9B8CDF8BBA7F691FE715C /* libPods-face2focusios.a */; };
@@ -105,7 +105,7 @@
 		C344685E49174138A15BF6CC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../src/assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		C4A6EFD73F2357EA7A7850E7 /* Pods-face2focusios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-face2focusios.release.xcconfig"; path = "Target Support Files/Pods-face2focusios/Pods-face2focusios.release.xcconfig"; sourceTree = "<group>"; };
 		C77347844D324CEF93623532 /* SFUIDisplay-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFUIDisplay-Light.ttf"; path = "../src/assets/fonts/SFUIDisplay-Light.ttf"; sourceTree = "<group>"; };
-		C7BC9CE025FB238F00E64296 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C7EEAF9A2602533800855120 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4F2DE395FF0EA5CAA485480 /* Pods-face2focusios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-face2focusios.debug.xcconfig"; path = "Target Support Files/Pods-face2focusios/Pods-face2focusios.debug.xcconfig"; sourceTree = "<group>"; };
 		D5F5D531E6A2AB87ECD16579 /* Pods-face2focusios-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-face2focusios-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-face2focusios-tvOSTests/Pods-face2focusios-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAF57DAF51B84EC18CD7A414 /* SFUIDisplay-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFUIDisplay-Thin.otf"; path = "../src/assets/fonts/SFUIDisplay-Thin.otf"; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				C7BC9CE025FB238F00E64296 /* GoogleService-Info.plist */,
+				C7EEAF9A2602533800855120 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* face2focusios */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* face2focusiosTests */,
@@ -434,9 +434,9 @@
 				76009F10EE5846E18F03E14F /* SFUIDisplay-Semibold.otf in Resources */,
 				D8736B5BE7194071AD0551B9 /* SFUIDisplay-Thin.otf in Resources */,
 				B84F63DAC15541A28020DB14 /* SFUIDisplay-Ultralight.otf in Resources */,
+				C7EEAF9B2602533800855120 /* GoogleService-Info.plist in Resources */,
 				CCF67564AE1E4F08880FAE50 /* OpenSans-Bold.ttf in Resources */,
 				4A6AED231E5B4C95AA160586 /* OpenSans-BoldItalic.ttf in Resources */,
-				C7BC9CE125FB238F00E64296 /* GoogleService-Info.plist in Resources */,
 				C36D13D92823477288D1E6FF /* OpenSans-Italic.ttf in Resources */,
 				F3FF6EB5EF394714A7609BB8 /* OpenSans-Light.ttf in Resources */,
 				779C8C09C3274B60B0032A77 /* OpenSans-LightItalic.ttf in Resources */,
