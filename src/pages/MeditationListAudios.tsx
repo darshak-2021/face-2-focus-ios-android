@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -13,12 +13,15 @@ import {
 } from 'react-native';
 import Colors from '../constant/Colors';
 // import Icon from 'react-native-vector-icons/Ionicons';
-
+import audiosContent from '../data/contents.json';
 import {EMOTIONSTYPE} from '../data/dummyData';
 import {SESSIONDETAIL} from '../data/dummyData';
 import AudioPlayer from '../components/AudioPlayerCard';
 
 const Meditation = (props: any) => {
+  const [emotion, setEmotion] = useState('happy')
+  const audioContent = audiosContent[emotion];
+  console.log('audio content of happy', audioContent)
   // Background Image of the Meditation Screen
   const mainresultViewBgImg = require('../assets/images/rever.jpg');
   // Dynamic Animation of Displaying Cartoon Animation

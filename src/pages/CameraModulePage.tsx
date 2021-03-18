@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, StatusBar, Platform} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../constant/Colors';
@@ -43,7 +43,7 @@ const Camera = (props: any) => {
         quality: 1,
         base64: true,
         mirrorImage: true,
-        orientation: 'portraitUpsideDown',
+        orientation: Platform.OS === 'android' ? 'portraitUpsideDown':'',
       };
       const data = await camera.current.takePictureAsync(options);
       console.log(data.uri);
