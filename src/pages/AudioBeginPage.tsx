@@ -6,17 +6,17 @@ import {
   Text,
   Platform,
   StatusBar,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIoni from 'react-native-vector-icons/Ionicons';
 import IconFav from 'react-native-vector-icons/MaterialIcons';
-
+import getEmotionImages from '../utils/ImageGenerator';
 import Button from '../components/Button';
 import Colors from '../constant/Colors';
-
-import {SESSIONDETAIL} from '../data/dummyData';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 const BeginScreenSession = (props: any) => {
+  const {data} = props.route.params;
+  console.log('Passing Data from the Meditation Screen ---------' , JSON.stringify(data));
   const backButton = (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -30,25 +30,23 @@ const BeginScreenSession = (props: any) => {
   return (
     <View style={styles.screen}>
       <StatusBar translucent={true} backgroundColor={'transparent'} />
-
       {/* This Should be Fetch from the server -- Perticular image will display at 
             background
         */}
       <ImageBackground
         style={styles.image}
-        source={require('../assets/images/audio-image/List1.jpg')}
-        imageStyle={{opacity: 0.3}}>
+        source={getEmotionImages(data.id)}
+        imageStyle={{opacity: 0.4}}>
         <View style={styles.backContainer}>{backButton}</View>
         <View style={styles.mainContainer}>
           <Text style={styles.mainHeaderText}>
-            {SESSIONDETAIL[0].sessionHeader}
+            {data.title}
           </Text>
           <View style={styles.textLabelView}>
             <Text style={styles.textLabel}>
-              {SESSIONDETAIL[0].modeOfSession}
+              {data.mode}
             </Text>
           </View>
-
           <View style={styles.symbolContainer}>
             <View>
               <View style={styles.symbolModify}>{reminder}</View>
@@ -56,14 +54,12 @@ const BeginScreenSession = (props: any) => {
                 <Text style={styles.symbolTextLabel}>Reminder</Text>
               </View>
             </View>
-
             <View>
               <View style={styles.symbolModify}>{share}</View>
               <View style={styles.symboViewLabel}>
                 <Text style={styles.symbolTextLabel}>Share</Text>
               </View>
             </View>
-
             <View>
               <View style={styles.symbolModify}>{heartLike}</View>
               <View style={styles.symboViewLabel}>
@@ -74,7 +70,7 @@ const BeginScreenSession = (props: any) => {
           <Button
             title="Begin Sesssion"
             onClickButtonHandler={() =>
-              props.navigation.navigate('AudioPlayerController')
+              props.navigation.navigate('AudioPlayerController', { data: data })
             }
           />
         </View>
@@ -107,7 +103,8 @@ const styles = StyleSheet.create({
   mainHeaderText: {
     color: Colors.white,
     fontFamily: 'OpenSans-Bold',
-    fontSize: 25,
+    fontSize: 21,
+    marginHorizontal:10
   },
   textLabelView: {
     marginTop: 20,
