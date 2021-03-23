@@ -8,38 +8,16 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconIoni from 'react-native-vector-icons/Ionicons';
-import IconEnty from 'react-native-vector-icons/Entypo';
 import Colors from '../constant/Colors';
-import {SESSIONDETAIL} from '../data/dummyData';
+import Controller from '../components/Controller';
+import SeekBar from '../components/SeekBar';
+import getEmotionImages from '../utils/ImageGenerator';
 const BeginScreenSession = (props: any) => {
-  const [toggleController, setToggleController] = useState(false);
-  const [toggleHeart, setToggleHeart] = useState(false);
-
+  const { data } = props.route.params;
   const backButton = (
     <IconIoni name="chevron-back-outline" size={27} color={Colors.white} />
   );
-  const replayTen = <Icon name="replay-10" size={35} color={Colors.silver} />;
-
-  const musicController = toggleController ? (
-    <IconEnty name="controller-play" size={40} color={Colors.silver} />
-  ) : (
-    <IconEnty name="controller-paus" size={40} color={Colors.silver} />
-  );
-
-  const heartLike = toggleHeart ? (
-    <IconIoni name="md-heart-outline" size={35} color={Colors.silver} />
-  ) : (
-    <IconIoni name="md-heart-sharp" size={35} color="#fb3958" />
-  );
-
-  const toggleControllerHandler = () => {
-    setToggleController(!toggleController);
-  };
-  const toggleHeartLikeHandler = () => {
-    setToggleHeart(!toggleHeart);
-  };
   return (
     <View style={styles.screen}>
       <StatusBar
@@ -49,11 +27,11 @@ const BeginScreenSession = (props: any) => {
       />
       {/* This Should be Fetch from the server -- Perticular image will display at 
             background
-        */}
+      */}
       <ImageBackground
         style={styles.image}
-        source={require('../assets/images/audio-image/List1.jpg')}
-        imageStyle={{opacity: 0.3}}>
+        source={getEmotionImages(data.id)}
+        imageStyle={{opacity: 0.4}}>
         <TouchableOpacity
           style={styles.backContainer}
           activeOpacity={0.8}
@@ -62,31 +40,15 @@ const BeginScreenSession = (props: any) => {
         </TouchableOpacity>
         <View style={styles.mainContainer}>
           <Text style={styles.mainHeaderText}>
-            {SESSIONDETAIL[0].sessionHeader}
+            {data.title}
           </Text>
           <View style={styles.textLabelView}>
-            <Text style={styles.textLabel}>{SESSIONDETAIL[0].duration}</Text>
+            <Text style={styles.textLabel}>{data.duration}</Text>
           </View>
-          <View style={styles.symbolContainer}>
-            <View style={styles.sideController}>{replayTen}</View>
-            {/* The Music Bar will be Progress around the Border*/}
-            <View style={styles.musicControllerContainer}>
-              <TouchableOpacity
-                onPress={toggleControllerHandler}
-                activeOpacity={1}>
-                {musicController}
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.sideController}>
-              <TouchableOpacity
-                onPress={toggleHeartLikeHandler}
-                activeOpacity={1}>
-                {heartLike}
-              </TouchableOpacity>
-            </View>
+          <Controller />
+          <View style={styles.MusicProgresserBar}>
+            {<SeekBar trackLength={354} currentPosition={206} />}
           </View>
-          <View style={styles.MusicProgresserBar}></View>
         </View>
       </ImageBackground>
     </View>
@@ -135,41 +97,8 @@ const styles = StyleSheet.create({
     color: Colors.silver,
     fontFamily: 'Raleway-Bold',
   },
-  symbolContainer: {
-    flexDirection: 'row',
-    marginVertical: 40,
-  },
-  musicControllerContainer: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    height: 70,
-    width: 70,
-    justifyContent: 'center',
-    borderRadius: 45,
-    alignItems: 'center',
-  },
-  symboViewLabel: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  symbolTextLabel: {
-    color: Colors.silver,
-    fontFamily: 'OpenSans-Regular',
-    fontWeight: '400',
-  },
-  sideController: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    height: 50,
-    width: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 35,
-    marginTop: 12,
-    marginHorizontal: 20,
-  },
   MusicProgresserBar: {
-    width: 380,
-    borderWidth: 0.5,
-    borderColor: Colors.silver,
+    width: 425,
   },
 });
 export default BeginScreenSession;
