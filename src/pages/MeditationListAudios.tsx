@@ -10,6 +10,7 @@ import {
   ScrollView,
   SafeAreaViewBase,
   SafeAreaView,
+  FlatList,
 } from 'react-native';
 import Colors from '../constant/Colors';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,15 +18,17 @@ import audiosContent from '../data/contents.json';
 import {EMOTIONSTYPE} from '../data/dummyData';
 import {SESSIONDETAIL} from '../data/dummyData';
 import AudioPlayer from '../components/AudioPlayerCard';
-
+import getEmotionImages from '../utils/ImageGenerator';
+import mainContent from '../data/contents.json';
+import getEmotionGif from '../utils/GifGenerator';
 const Meditation = (props: any) => {
-  const [emotion, setEmotion] = useState('happy')
+  const [emotion, setEmotion] = useState('sad');
   const audioContent = audiosContent[emotion];
-  console.log('audio content of happy', audioContent)
+  console.log('Audio content of happy', audioContent);
   // Background Image of the Meditation Screen
   const mainresultViewBgImg = require('../assets/images/rever.jpg');
   // Dynamic Animation of Displaying Cartoon Animation
-  const moodBaseAnimate = require('../assets/images/animated/Breath.gif');
+  const moodBaseAnimate = getEmotionGif(audioContent.emotionId);
   // Two Different Button Redering Logic
   // let backButton =
   //   Platform.OS === 'android' ? (
@@ -37,8 +40,8 @@ const Meditation = (props: any) => {
   const contentHeader = (
     <Text style={styles.headerContent}>Suggest Session on your Mood</Text>
   );
+  
   return (
-    <ScrollView>
       <View style={styles.screen}>
         <StatusBar
           barStyle="light-content"
@@ -56,7 +59,6 @@ const Meditation = (props: any) => {
             }
             {/* {backButton} */}
           </View>
-
           <View style={styles.animationMaincontainer}>
             {/* Animation Video and Title Description */}
             <View style={styles.gifImageContainer}>
@@ -67,18 +69,33 @@ const Meditation = (props: any) => {
                 ...styles.subTitleTextView,
                 marginTop: 180,
               }}>
-              <Text style={{...styles.subTextTitle, fontSize: 18}}>
-                {EMOTIONSTYPE[0].mainTitle}
+              <Text style={[styles.subTextTitle,{ fontSize: 18, marginTop: 25}]}>
+                {audioContent.title}
               </Text>
             </View>
             <View style={styles.subTitleTextView}>
               <Text style={styles.subTextTitle}>
-                {EMOTIONSTYPE[0].subTitle}
+                {audioContent.description}
               </Text>
             </View>
           </View>
           {contentHeader}
-          <AudioPlayer
+          <FlatList
+            data={audioContent.media}
+            keyExtractor={(item, index) => item.id.toString()}
+            renderItem={({item, index, separators}) => (
+              <AudioPlayer
+                image={getEmotionImages(item.id)}
+                sessionHeader={item.title}
+                mode={item.mode}
+                duration={item.duration}
+                onclick={() =>
+                  props.navigation.navigate('AudioBegin', {data: item})
+                }
+              />
+            )}
+          />
+          {/* <AudioPlayer
             image={require('../assets/images/audio-image/List1.jpg')}
             sessionHeader={SESSIONDETAIL[0].sessionHeader}
             mode={SESSIONDETAIL[0].modeOfSession}
@@ -112,14 +129,12 @@ const Meditation = (props: any) => {
             mode={SESSIONDETAIL[4].modeOfSession}
             duration={SESSIONDETAIL[4].duration}
             onclick={() => {}}
-          />
+          /> */}
           <View style={{marginBottom: 80}}></View>
         </ImageBackground>
       </View>
-    </ScrollView>
   );
 };
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -173,5 +188,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
 export default Meditation;
