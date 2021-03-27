@@ -58,6 +58,11 @@ const AppStacknavigator = () => {
         component={AudioPlayerController}
         options={({navigation}) => ({headerShown: false, animationEnabled:false})}
       />
+      <Stack.Screen
+        name="UserProfilePage"
+        component={UserProfilePage}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
     </Stack.Navigator>
   );
 };
