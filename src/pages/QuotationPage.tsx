@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,13 +12,26 @@ import {
 import generateQuotes from '../utils/generateQuotations';
 // constant Colors of App
 import Colors from '../constant/Colors';
+import { deleteToken, getToken } from '../utils/StorageHelper';
 
 const QuotationScreen = (props: any) => {
   // TextColor of Quotation Screen
   const color = Colors.textWhiteaccent;
 
+  useEffect(() => {
+    // deleteToken()
+  })
+  const onPress = () => {
+    getToken().then(token => {
+      if(token){
+        props.navigation.navigate('CameraModule')
+      }else{
+        props.navigation.navigate('LoginModule')
+      }
+    })
+  }
   return (
-    <TouchableWithoutFeedback onPress={() => props.navigation.navigate('MeditationListAudios')}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.quoteScreenContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#1F232E" />
         <View style={styles.imageContainer}>
