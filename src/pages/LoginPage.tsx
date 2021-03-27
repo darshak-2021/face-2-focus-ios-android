@@ -23,6 +23,7 @@ import {WEB_CLIENT_ID} from '../utils/keys';
 import Colors from '../constant/Colors';
 import SocialButton from '../components/SocialButton';
 import firebaseSetup from '../credential/firebase-setup';
+import { storeLoginToken } from '../utils/StorageHelper';
 
 const backImageFront = require('../assets/images/mountain.jpg');
 const topIconFront = require('../assets/images/login-icon/logo.png');
@@ -32,7 +33,7 @@ const LoginScreen = (props: any) => {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
-
+  let idToken = null;
   useEffect(() => {
     configureGoogleSign();
   }, []);
@@ -47,12 +48,13 @@ const LoginScreen = (props: any) => {
   async function onGoogleButtonPress() {
     try {
       const userInfo = await GoogleSignin.signIn();
-      const idToken = userInfo.idToken // Get the Users ID token
+      idToken = userInfo.idToken // Get the Users ID token
       console.log(userInfo);
       const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
       setUserInfo(userInfo);
       setError(null);
       setIsLoggedIn(true);
+      storeLoginToken(idToken)
       return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -239,10 +241,10 @@ const LoginScreen = (props: any) => {
               color="#de4d41"
               backgroundColor="rgba(255,255,255,0.5)"
               onPress={() => {
-                onGoogleButtonPress();
-                isLoggedIn === true
-                  ? props.navigation.navigate('UserProfile')
-                  : '';
+                onGoogleButtonPress().then(() => {
+                  props.navigation.replace('CameraModule')
+                });
+                
               }}
             />
           </TouchableWithoutFeedback>
