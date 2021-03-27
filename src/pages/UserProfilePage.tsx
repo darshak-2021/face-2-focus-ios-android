@@ -18,7 +18,7 @@ import Colors from '../constant/Colors';
 
 import signOut from '../utils/signingOut';
 
-const Profile = () => {
+const Profile = (props: any) => {
   return (
     <View style={styles.screen}>
       <StatusBar
@@ -84,7 +84,14 @@ const Profile = () => {
           style={{
             color: Colors.white,
           }}
-          onClickButtonHandler = {() => signOut()}
+          onClickButtonHandler = {() => {
+            signOut()
+            props.navigation.navigate('LoginModule')
+            props.navigation.reset({
+              index: 0,
+              routes: [{name: 'LoginModule'}],
+            });
+          }}
         />
       </View>
     </View>
