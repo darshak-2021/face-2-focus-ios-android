@@ -1,49 +1,33 @@
 import React, {useRef, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, StatusBar, Platform} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+  Platform,
+} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../constant/Colors';
 // User Components Import
-// import UserProfile from '../components/user/UserProfile';
+import UserProfile from '../components/UserProfile';
 const Camera = (props: any) => {
-  // const [startCamera,setStartCamera] = React.useState(false)
-  // const [hasPermission, setHasPermission] = useState<any>(null)
-
-  // Camera Preview
-  // const [previewVisible, setPreviewVisible] = useState(false);
-  // const [capturedImage, setCapturedImage] = useState<any>(null);
   let camera = useRef(null);
   const [cameraType, setCameraType] = useState(RNCamera.Constants.Type.back);
   const [cameraFlash, setCameraFlash] = useState(
     RNCamera.Constants.FlashMode.off,
   );
-
   const [toggleFlashed, setToggleFlashed] = useState(true);
-  // const __takePicture = async () => {
-  //   if (!camera) return;
-  //   const options = {
-  //     mirrorImage:true,
-  //     base64: true,
-  //     quality: 1,
-  //     orientation: 'portraitUpsideDown'
-  //   }
-  //   const photo = await camera.current.takePictureAsync(options);
-  //   console.log(photo);
-  //   setPreviewVisible(true);
-  //   setCapturedImage(photo);
-  // };
-
   {
     /* Old Method to Toggle Image */
   }
-
   const takePicture = async () => {
     if (camera) {
       const options = {
         quality: 1,
         base64: true,
         mirrorImage: true,
-        orientation: Platform.OS === 'android' ? 'portraitUpsideDown':'',
+        orientation: Platform.OS === 'android' ? 'portraitUpsideDown' : '',
       };
       const data = await camera.current.takePictureAsync(options);
       console.log(data.uri);
@@ -99,6 +83,10 @@ const Camera = (props: any) => {
           buttonPositive: 'Ok',
           buttonNegative: 'Cancel',
         }}>
+        <UserProfile
+          onProfilePicture={() => props.navigation.navigate('UserProfilePage')}
+        />
+
         <View style={styles.managerContainer}>
           {/* Flash Icons UI */}
           <View style={styles.flashContainer}>
@@ -162,6 +150,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
+    margin: 10,
   },
   flashContainer: {
     flex: 8,
@@ -172,7 +161,7 @@ const styles = StyleSheet.create({
   cameraContainer: {
     flex: 10,
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 15,
   },
   flipContainer: {
     flex: 8,
