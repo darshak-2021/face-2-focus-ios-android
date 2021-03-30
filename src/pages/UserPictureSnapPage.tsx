@@ -28,7 +28,7 @@ const UserSnapScreen = (props: any) => {
         <TouchableOpacity
           style={styles.closeContainer}
           activeOpacity={0.7}
-          onPress={() => {}}>
+          onPress={() => props.navigation.navigate('CameraModule')}>
           <CloseOutline name="close-outline" size={38} color="white" />
         </TouchableOpacity>
 

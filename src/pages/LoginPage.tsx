@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+
 import {
   View,
   Text,
@@ -22,18 +23,17 @@ import {WEB_CLIENT_ID} from '../utils/keys';
 
 import Colors from '../constant/Colors';
 import SocialButton from '../components/SocialButton';
-import firebaseSetup from '../credential/firebase-setup';
-import { storeLoginToken } from '../utils/StorageHelper';
+import {storeLoginToken, storeUserInfo} from '../utils/StorageHelper';
 
 const backImageFront = require('../assets/images/mountain.jpg');
 const topIconFront = require('../assets/images/login-icon/logo.png');
 
 const LoginScreen = (props: any) => {
-  const {auth} = firebaseSetup();
   const [userInfo, setUserInfo] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   let idToken = null;
+
   useEffect(() => {
     configureGoogleSign();
   }, []);
@@ -45,17 +45,19 @@ const LoginScreen = (props: any) => {
     });
   }
 
-  async function onGoogleButtonPress() {
+  async function signInHandler() {
     try {
+      await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      idToken = userInfo.idToken // Get the Users ID token
+      idToken = userInfo.idToken; // Get the Users ID token
       console.log(userInfo);
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
+      // const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
       setUserInfo(userInfo);
       setError(null);
       setIsLoggedIn(true);
-      storeLoginToken(idToken)
-      return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
+      storeLoginToken(idToken);
+      storeUserInfo(userInfo);
+      // return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         {
@@ -83,41 +85,52 @@ const LoginScreen = (props: any) => {
     console.log('Sign IN');
   }
 
-  const signIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      setUserInfo(userInfo);
-      setError(null);
-      setIsLoggedIn(true);
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        {
-          /*-------When User cancel Sign In Progress-----*/
-        }
-        Alert.alert('PROCESS HAS BEEN CANCELLED');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        {
-          /*-------When in Progress Ready-------*/
-        }
-        Alert.alert('PROCESS HAS IN PROGRESS');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        {
-          /*--------When Play Services not Available------*/
-        }
-        Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
-      } else {
-        {
-          /*--------Some Other Errors-------*/
-        }
-        Alert.alert('SOMETHING ELSE WENT WRONG');
-        setError(error);
-      }
-    }
-    console.log('Sign IN');
-  };
+  // const signIn = async () => {
+  //   try {
+  //     await GoogleSignin.hasPlayServices();
+  //     const userInfo = await GoogleSignin.signIn();
+  //     setUserInfo(userInfo);
+  //     setError(null);
+  //     setIsLoggedIn(true);
+  //   } catch (error) {
+  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+  //       {
+  //         /*-------When User cancel Sign In Progress-----*/
+  //       }
+  //       Alert.alert('PROCESS HAS BEEN CANCELLED');
+  //     } else if (error.code === statusCodes.IN_PROGRESS) {
+  //       {
+  //         /*-------When in Progress Ready-------*/
+  //       }
+  //       Alert.alert('PROCESS HAS IN PROGRESS');
+  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+  //       {
+  //         /*--------When Play Services not Available------*/
+  //       }
+  //       Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
+  //     } else {
+  //       {
+  //         /*--------Some Other Errors-------*/
+  //       }
+  //       Alert.alert('SOMETHING ELSE WENT WRONG');
+  //       setError(error);
+  //     }
+  //   }
+  //   console.log('Sign IN');
+  // };
 
-  const signOut = async () => {
+  // const signOut = async () => {
+  //   try {
+  //     await GoogleSignin.revokeAccess();
+  //     await GoogleSignin.signOut();
+  //     setIsLoggedIn(false);
+  //   } catch (error) {
+  //     Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
+  //   }
+  //   console.log('Sign OUT');
+  // };
+
+  async function signingOut() {
     try {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
@@ -126,35 +139,25 @@ const LoginScreen = (props: any) => {
       Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
     }
     console.log('Sign OUT');
-  };
-
-  async function signingOut() {
-    try {
-      await auth().signOut();
-      setIsLoggedIn(false);
-    } catch (error) {
-      Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
-    }
-    console.log('Sign OUT');
   }
 
-  const getCurrentUserInfo = async () => {
-    try {
-      const userInfo = await GoogleSignin.signInSilently();
-      setUserInfo(userInfo);
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
-        {
-          /*When User Has Not Sign In Yet*/
-        }
-        Alert.alert('PLEASE SIGN IN');
-        setIsLoggedIn(false);
-      } else {
-        Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
-        setIsLoggedIn(false);
-      }
-    }
-  };
+  // const getCurrentUserInfo = async () => {
+  //   try {
+  //     const userInfo = await GoogleSignin.signInSilently();
+  //     setUserInfo(userInfo);
+  //   } catch (error) {
+  //     if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+  //       {
+  //         /*When User Has Not Sign In Yet*/
+  //       }
+  //       Alert.alert('PLEASE SIGN IN');
+  //       setIsLoggedIn(false);
+  //     } else {
+  //       Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
+  //       setIsLoggedIn(false);
+  //     }
+  //   }
+  // };
 
   const color = Colors.textWhiteaccent;
 
@@ -165,7 +168,9 @@ const LoginScreen = (props: any) => {
         btnType="facebook"
         color="#4867aa"
         backgroundColor="rgba(255,255,255,0.5)"
-        onPress={() => props.navigation.navigate('CameraModule')}
+        onPress={() =>
+          Alert.alert('Facebook Login Not Integrated Please Login with Google')
+        }
       />
     ) : (
       <SocialButton
@@ -173,7 +178,9 @@ const LoginScreen = (props: any) => {
         btnType="apple"
         color="#ffffff"
         backgroundColor="rgba(0,0,0,0.5)"
-        onPress={() => props.navigation.navigate('CameraModule')}
+        onPress={() =>
+          Alert.alert('Apple Login Not Integrated Please Login with Google')
+        }
       />
     );
 
@@ -241,10 +248,9 @@ const LoginScreen = (props: any) => {
               color="#de4d41"
               backgroundColor="rgba(255,255,255,0.5)"
               onPress={() => {
-                onGoogleButtonPress().then(() => {
-                  props.navigation.replace('CameraModule')
+                signInHandler().then(() => {
+                  props.navigation.replace('CameraModule');
                 });
-                
               }}
             />
           </TouchableWithoutFeedback>
@@ -305,15 +311,14 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100,
-    borderColor:Colors.silver,
-    borderWidth:2
-
+    borderColor: Colors.silver,
+    borderWidth: 2,
   },
   displayTitle: {
     fontSize: 22,
     color: Colors.silver,
-    fontFamily:'Raleway-Bold',
-    marginHorizontal: 20
+    fontFamily: 'Raleway-Bold',
+    marginHorizontal: 20,
   },
 });
 
