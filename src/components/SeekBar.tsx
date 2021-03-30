@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   track: {
     height: 2,
     borderRadius: 1,
+    margin:8
   },
   thumb: {
     width: 10,
