@@ -31,7 +31,7 @@ const AppStacknavigator = () => {
       <Stack.Screen
         name="LoginModule"
         component={LoginModule}
-        options={{headerShown: false}}
+        options={{headerShown: false, animationEnabled:false}}
       />
       <Stack.Screen
         name="CameraModule"

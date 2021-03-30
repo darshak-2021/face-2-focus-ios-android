@@ -12,15 +12,12 @@ import {
 import generateQuotes from '../utils/generateQuotations';
 // constant Colors of App
 import Colors from '../constant/Colors';
-import { deleteToken, getToken } from '../utils/StorageHelper';
+import { getToken } from '../utils/StorageHelper';
 
 const QuotationScreen = (props: any) => {
   // TextColor of Quotation Screen
   const color = Colors.textWhiteaccent;
 
-  useEffect(() => {
-    // deleteToken()
-  })
   const onPress = () => {
     getToken().then(token => {
       if(token){

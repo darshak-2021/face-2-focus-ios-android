@@ -7,19 +7,15 @@ import {
   ImageBackground,
   Platform,
   Image,
-  ScrollView,
-  SafeAreaViewBase,
-  SafeAreaView,
   FlatList,
+  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import Colors from '../constant/Colors';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import audiosContent from '../data/contents.json';
-import {EMOTIONSTYPE} from '../data/dummyData';
-import {SESSIONDETAIL} from '../data/dummyData';
 import AudioPlayer from '../components/AudioPlayerCard';
 import getEmotionImages from '../utils/ImageGenerator';
-import mainContent from '../data/contents.json';
 import getEmotionGif from '../utils/GifGenerator';
 const Meditation = (props: any) => {
   const [emotion, setEmotion] = useState('sad');
@@ -30,34 +26,39 @@ const Meditation = (props: any) => {
   // Dynamic Animation of Displaying Cartoon Animation
   const moodBaseAnimate = getEmotionGif(audioContent.emotionId);
   // Two Different Button Redering Logic
-  // let backButton =
-  //   Platform.OS === 'android' ? (
-  //     <Icon name="arrow-back-outline" size={27} color={Colors.white} />
-  //   ) : (
-  //     <Icon name="chevron-back-outline" size={33} color={Colors.white} />
-  //   );
+  let backButton =
+    Platform.OS === 'android' ? (
+      <Icon name="arrow-back-outline" size={27} color={Colors.white} />
+    ) : (
+      <Icon name="chevron-back-outline" size={33} color={Colors.white} />
+    );
   // Static Text
   const contentHeader = (
     <Text style={styles.headerContent}>Suggest Session on your Mood</Text>
   );
-  
+
   return (
-      <View style={styles.screen}>
-        <StatusBar
-          barStyle="light-content"
-          translucent
-          backgroundColor="transparent"
-        />
+    <View style={styles.screen}>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <ScrollView>
         <ImageBackground
           source={mainresultViewBgImg}
           style={styles.image}
           imageStyle={{opacity: 0.6}}>
           <View style={styles.backContainer}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => props.navigation.navigate('CameraModule')}>
+              {backButton}
+            </TouchableOpacity>
             {
               /* back Button */
               // Customizable navigation will come here
             }
-            {/* {backButton} */}
           </View>
           <View style={styles.animationMaincontainer}>
             {/* Animation Video and Title Description */}
@@ -69,7 +70,8 @@ const Meditation = (props: any) => {
                 ...styles.subTitleTextView,
                 marginTop: 180,
               }}>
-              <Text style={[styles.subTextTitle,{ fontSize: 18, marginTop: 25}]}>
+              <Text
+                style={[styles.subTextTitle, {fontSize: 18, marginTop: 25}]}>
                 {audioContent.title}
               </Text>
             </View>
@@ -95,44 +97,10 @@ const Meditation = (props: any) => {
               />
             )}
           />
-          {/* <AudioPlayer
-            image={require('../assets/images/audio-image/List1.jpg')}
-            sessionHeader={SESSIONDETAIL[0].sessionHeader}
-            mode={SESSIONDETAIL[0].modeOfSession}
-            duration={SESSIONDETAIL[0].duration}
-            onclick={() => props.navigation.navigate('AudioBegin')}
-          />
-          <AudioPlayer
-            image={require('../assets/images/audio-image/List2.jpg')}
-            sessionHeader={SESSIONDETAIL[1].sessionHeader}
-            mode={SESSIONDETAIL[1].modeOfSession}
-            duration={SESSIONDETAIL[1].duration}
-            onclick={() => {}}
-          />
-          <AudioPlayer
-            image={require('../assets/images/audio-image/List3.jpeg')}
-            sessionHeader={SESSIONDETAIL[2].sessionHeader}
-            mode={SESSIONDETAIL[2].modeOfSession}
-            duration={SESSIONDETAIL[2].duration}
-            onclick={() => {}}
-          />
-          <AudioPlayer
-            image={require('../assets/images/audio-image/List4.jpg')}
-            sessionHeader={SESSIONDETAIL[3].sessionHeader}
-            mode={SESSIONDETAIL[3].modeOfSession}
-            duration={SESSIONDETAIL[3].duration}
-            onclick={() => {}}
-          />
-          <AudioPlayer
-            image={require('../assets/images/audio-image/List5.jpg')}
-            sessionHeader={SESSIONDETAIL[4].sessionHeader}
-            mode={SESSIONDETAIL[4].modeOfSession}
-            duration={SESSIONDETAIL[4].duration}
-            onclick={() => {}}
-          /> */}
           <View style={{marginBottom: 80}}></View>
         </ImageBackground>
-      </View>
+      </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
