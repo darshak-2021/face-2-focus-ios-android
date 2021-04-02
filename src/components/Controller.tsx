@@ -57,13 +57,19 @@ const Controller = (props: any) => {
   return (
     <View style={styles.symbolContainer}>
       <View style={styles.sideController}>
-        <TouchableOpacity onPress={props.onBack}>{replayTen}</TouchableOpacity>
+        <TouchableOpacity onPress={props.onBackMedia}>{replayTen}</TouchableOpacity>
       </View>
       {/* The Music Bar will be Progress around the Border*/}
       <View style={styles.musicControllerContainer}>
-        <TouchableOpacity onPress={toggleControllerHandler} activeOpacity={1}>
-          {musicController}
-        </TouchableOpacity>
+       {
+         props.paused ? 
+         <TouchableOpacity onPress={props.onPressPlay} activeOpacity={1}>
+               <IconEnty name="controller-play" size={40} color={Colors.silver} />
+         </TouchableOpacity>:
+         <TouchableOpacity onPress={props.onPressPause} activeOpacity={1}>
+               <IconEnty name="controller-paus" size={40} color={Colors.silver} />
+         </TouchableOpacity>
+       } 
       </View>
       <View style={styles.sideController}>
         <TouchableOpacity onPress={toggleHeartLikeHandler} activeOpacity={1}>

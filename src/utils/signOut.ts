@@ -4,7 +4,7 @@ import { deleteToken } from './StorageHelper';
 
 const signOut = async () => {
     try {
-        await GoogleSignin.revokeAccess();
+        // await GoogleSignin.revokeAccess();
         await GoogleSignin.signOut();
         deleteToken();
     } catch (error) {
