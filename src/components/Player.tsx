@@ -9,9 +9,9 @@ import {
   Platform,
 } from 'react-native';
 
-import Controller from '../components/Controller';
+import Controller from './Controller';
 
-import SeekBar from '../components/SeekBar';
+import SeekBar from './SeekBar';
 
 import Video from 'react-native-video';
 
@@ -31,7 +31,7 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      paused: true,
+      paused: false,
       totalLength: 1,
       currentPosition: 0,
     };
@@ -50,7 +50,7 @@ class Player extends Component {
     this.refs.audioElement && this.refs.audioElement.seek(time);
     this.setState({
       currentPosition: time,
-      paused: false,
+      paused: true,
     });
   }
 

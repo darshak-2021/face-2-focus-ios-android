@@ -12,7 +12,7 @@ const minutesAndSeconds = (position: number) => [
   pad(Math.floor(position / 60), 2),
   pad(position % 60, 2),
 ];
-const SeekBar = (props) => {
+const SeekBar = (props:any) => {
   const elapsed = minutesAndSeconds(props.currentPosition);
   const remaining = minutesAndSeconds(
     props.trackLength - props.currentPosition,
