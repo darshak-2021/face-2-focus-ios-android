@@ -45,43 +45,49 @@ const LoginScreen = (props: any) => {
     });
   }
 
-  async function signInHandler() {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      idToken = userInfo.idToken; // Get the Users ID token
-      console.log(userInfo);
-      // const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
-      setUserInfo(userInfo);
-      setError(null);
-      setIsLoggedIn(true);
-      storeLoginToken(idToken);
-      storeUserInfo(userInfo);
-      // return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        {
-          /*-------When User cancel Sign In Progress-----*/
-        }
-        Alert.alert('PROCESS HAS BEEN CANCELLED');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        {
-          /*-------When in Progress Ready-------*/
-        }
-        Alert.alert('PROCESS HAS IN PROGRESS');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        {
-          /*--------When Play Services not Available------*/
-        }
-        Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
-      } else {
-        {
-          /*--------Some Other Errors-------*/
-        }
-        Alert.alert('SOMETHING ELSE WENT WRONG');
-        setError(error);
-      }
-    }
+  function signInHandler() {
+      GoogleSignin.hasPlayServices().then(() => {
+        GoogleSignin.signIn().then(userInfo => {
+          idToken = userInfo.idToken; // Get the Users ID token
+          console.log(userInfo);
+          // const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
+          setUserInfo(userInfo);
+          setError(null);
+          setIsLoggedIn(true);
+          storeLoginToken(idToken);
+          storeUserInfo(userInfo);
+          props.navigation.replace('CameraModule');
+          // return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
+        }).catch(error => {
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            {
+              /*-------When User cancel Sign In Progress-----*/
+            }
+            Alert.alert('PROCESS HAS BEEN CANCELLED');
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            {
+              /*-------When in Progress Ready-------*/
+            }
+            Alert.alert('PROCESS HAS IN PROGRESS');
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            {
+              /*--------When Play Services not Available------*/
+            }
+            Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
+          } else {
+            {
+              /*--------Some Other Errors-------*/
+            }
+            console.log(error);
+            Alert.alert('SOMETHING ELSE WENT WRONG');
+            setError(error);
+          }
+        });
+      }).catch(error => {
+        // Google play service not available
+        Alert.alert('Google play service is not available on this device');
+      });
+      
     console.log('Sign IN');
   }
 
@@ -248,9 +254,7 @@ const LoginScreen = (props: any) => {
               color="#de4d41"
               backgroundColor="rgba(255,255,255,0.5)"
               onPress={() => {
-                signInHandler().then(() => {
-                  props.navigation.replace('CameraModule');
-                });
+                signInHandler()
               }}
             />
           </TouchableWithoutFeedback>
