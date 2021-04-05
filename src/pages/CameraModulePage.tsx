@@ -85,6 +85,11 @@ const Camera = (props: any) => {
         }}>
         <UserProfile
           onProfilePicture={() => props.navigation.navigate('UserProfilePage')}
+          onPickerPicture={(dataVal) =>
+            props.navigation.navigate('PickerPicture', {
+              data: dataVal,
+            })
+          }
         />
 
         <View style={styles.managerContainer}>

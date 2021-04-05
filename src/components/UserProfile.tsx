@@ -14,6 +14,7 @@ import {
 import Colors from '../constant/Colors';
 import {getUserInfo} from '../utils/StorageHelper';
 
+
 const UserProfile = (props: any) => {
   const [userPhoto, setUserPhoto] = useState(null);
   const [userGivenName, setUserGivenName] = useState(null);
@@ -27,9 +28,8 @@ const UserProfile = (props: any) => {
   const currentHours = today.getHours();
   let greetingMessage = null;
 
-  if (currentHours < 12) 
-    greetingMessage = 'Good Morning';
-  else if (currentHours >=12 && currentHours <= 17)
+  if (currentHours < 12) greetingMessage = 'Good Morning';
+  else if (currentHours >= 12 && currentHours <= 17)
     greetingMessage = 'Good Afternoon';
   else if (currentHours >= 17 && currentHours <= 24)
     greetingMessage = 'Good Evening';
@@ -39,10 +39,13 @@ const UserProfile = (props: any) => {
       <TouchableWithoutFeedback onPress={props.onProfilePicture}>
         <View style={styles.profileInfoContainer}>
           <View style={styles.imageContainer}>
-            <Image style={styles.userImageProfile} source={{uri:userPhoto}} />
+            <Image style={styles.userImageProfile} source={{uri: userPhoto}} />
           </View>
           <View style={styles.textContainer}>
-            <Text style={styles.grettingText}> {greetingMessage}, {userGivenName}</Text>
+            <Text style={styles.grettingText}>
+              {' '}
+              {greetingMessage}, {userGivenName}
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
