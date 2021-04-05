@@ -87,7 +87,6 @@ const LoginScreen = (props: any) => {
         // Google play service not available
         Alert.alert('Google play service is not available on this device');
       });
-      
     console.log('Sign IN');
   }
 
@@ -227,7 +226,7 @@ const LoginScreen = (props: any) => {
           )}
         </View>
 
-        <View style={styles.userInfoContainer}>
+        {/* <View style={styles.userInfoContainer}>
           {isLoggedIn === true ? (
             <>
               <Text style={styles.displayTitle}>
@@ -243,7 +242,7 @@ const LoginScreen = (props: any) => {
               </View>
             </>
           ) : null}
-        </View>
+        </View> */}
 
         <View style={styles.buttonContainer}>
           <TouchableWithoutFeedback>

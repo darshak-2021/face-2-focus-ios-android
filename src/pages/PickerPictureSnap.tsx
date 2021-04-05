@@ -13,8 +13,10 @@ import CloseOutline from 'react-native-vector-icons/Ionicons';
 
 import Button from '../components/Button';
 
-const UserSnapScreen = (props: any) => {
-  console.log(props);
+const PickerPicture = (props: any) => {
+
+  console.log('Image is Picked Successfully: ', props.route.params.data)
+
   return (
     <View style={styles.screen}>
       <StatusBar
@@ -23,13 +25,16 @@ const UserSnapScreen = (props: any) => {
         barStyle="light-content"
       />
       <ImageBackground
-        source={{uri: props.route.params.uri}}
+        source={{uri: props.route.params.data}}
         style={styles.image}>
+
         <TouchableOpacity
           style={styles.closeContainer}
           activeOpacity={0.7}
           onPress={() => props.navigation.navigate('CameraModule')}>
+
           <CloseOutline name="close-outline" size={40} color="white" />
+
         </TouchableOpacity>
 
         <View style={styles.buttonContainer}>
@@ -71,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserSnapScreen;
+export default PickerPicture;

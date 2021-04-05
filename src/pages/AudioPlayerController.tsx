@@ -107,8 +107,8 @@ class Player extends Component {
       mainHeaderText: {
         color: Colors.white,
         fontFamily: 'OpenSans-Bold',
-        fontSize: 23,
-        padding:10
+        fontSize: 20,
+        padding:5
       },
       textLabelView: {
         marginTop: 20,

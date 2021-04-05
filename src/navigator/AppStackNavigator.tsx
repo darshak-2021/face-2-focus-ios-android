@@ -17,6 +17,8 @@ import AudioBeginPage from '../pages/AudioBeginPage';
 
 import AudioPlayerController from '../pages/AudioPlayerController';
 
+import PickerPictureSnap from '../pages/PickerPictureSnap';
+
 
 const Stack = createStackNavigator();
 
@@ -44,6 +46,11 @@ const AppStacknavigator = () => {
         options={({navigation}) => ({headerShown: false, animationEnabled:false})}
       />
       <Stack.Screen
+        name="PickerPicture"
+        component={PickerPictureSnap}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
+      <Stack.Screen
         name="MeditationListAudios"
         component={MeditationListAudios}
         options={({navigation}) => ({headerShown: false, animationEnabled:false})}
@@ -63,6 +70,7 @@ const AppStacknavigator = () => {
         component={UserProfilePage}
         options={({navigation}) => ({headerShown: false, animationEnabled:false})}
       />
+      
     </Stack.Navigator>
   );
 };

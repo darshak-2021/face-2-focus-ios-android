@@ -17,6 +17,7 @@ import audiosContent from '../data/contents.json';
 import AudioPlayer from '../components/AudioPlayerCard';
 import getEmotionImages from '../utils/ImageGenerator';
 import getEmotionGif from '../utils/GifGenerator';
+
 const Meditation = (props: any) => {
   const [emotion, setEmotion] = useState('sad');
   const audioContent = audiosContent[emotion];
@@ -30,7 +31,7 @@ const Meditation = (props: any) => {
     Platform.OS === 'android' ? (
       <Icon name="arrow-back-outline" size={27} color={Colors.white} />
     ) : (
-      <Icon name="chevron-back-outline" size={33} color={Colors.white} />
+      <Icon name="chevron-back-outline" size={34} color={Colors.white} />
     );
   // Static Text
   const contentHeader = (
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backContainer: {
-    marginTop: Platform.OS === 'android' ? 28 : 40,
+    marginTop: Platform.OS === 'android' ? 28 : 32,
     paddingRight: Platform.OS === 'android' ? 350 : 370,
   },
   animationMaincontainer: {
