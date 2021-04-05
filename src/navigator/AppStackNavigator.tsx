@@ -17,6 +17,8 @@ import AudioBeginPage from '../pages/AudioBeginPage';
 
 import AudioPlayerController from '../pages/AudioPlayerController';
 
+import UserPickerPictureSnap from '../pages/UserPickerPictureSnap';
+
 
 const Stack = createStackNavigator();
 
@@ -41,6 +43,11 @@ const AppStacknavigator = () => {
       <Stack.Screen
         name="UserPictureSnap"
         component={UserPictureSnapPage}
+        options={({navigation}) => ({headerShown: false, animationEnabled:false})}
+      />
+      <Stack.Screen
+        name="UserPickerPictureSnap"
+        component={UserPickerPictureSnap}
         options={({navigation}) => ({headerShown: false, animationEnabled:false})}
       />
       <Stack.Screen

@@ -14,6 +14,7 @@ import {
 import Colors from '../constant/Colors';
 import {getUserInfo} from '../utils/StorageHelper';
 
+import SimpleImagePicker from './ImagePicker';
 
 const UserProfile = (props: any) => {
   const [userPhoto, setUserPhoto] = useState(null);
@@ -49,6 +50,9 @@ const UserProfile = (props: any) => {
           </View>
         </View>
       </TouchableWithoutFeedback>
+      <SimpleImagePicker
+        onImagePicked={(dataVal) => props.onPickerPicture(dataVal)}
+      />
     </View>
   );
 };
