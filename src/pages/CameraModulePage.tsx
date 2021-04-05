@@ -30,7 +30,7 @@ const Camera = (props: any) => {
         orientation: Platform.OS === 'android' ? 'portraitUpsideDown' : '',
       };
       const data = await camera.current.takePictureAsync(options);
-      console.log(data.uri);
+      console.log('User Picture Place Successfully : - ', data.uri);
       props.navigation.navigate('UserPictureSnap', {uri: data.uri});
     }
   };
