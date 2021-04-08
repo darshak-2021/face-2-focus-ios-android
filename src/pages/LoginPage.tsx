@@ -17,6 +17,8 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
+import {Auth} from 'aws-amplify';
+
 import Button from '../components/Button';
 
 import {WEB_CLIENT_ID} from '../utils/keys';
@@ -46,95 +48,123 @@ const LoginScreen = (props: any) => {
   }
 
   function signInHandler() {
-      GoogleSignin.hasPlayServices().then(() => {
-        GoogleSignin.signIn().then(userInfo => {
+    GoogleSignin.hasPlayServices()
+      .then(() => {
+        GoogleSignin.signIn()
+          .then((userInfo) => {
+            idToken = userInfo.idToken; // Get the Users ID token
+            console.log(userInfo);
+            // const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
+            setUserInfo(userInfo);
+            setError(null);
+            setIsLoggedIn(true);
+            storeLoginToken(idToken);
+            storeUserInfo(userInfo);
+            props.navigation.replace('CameraModule');
+            // return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
+          })
+          .catch((error) => {
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+              {
+                /*-------When User cancel Sign In Progress-----*/
+              }
+              Alert.alert('PROCESS HAS BEEN CANCELLED');
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+              {
+                /*-------When in Progress Ready-------*/
+              }
+              Alert.alert('PROCESS HAS IN PROGRESS');
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+              {
+                /*--------When Play Services not Available------*/
+              }
+              Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
+            } else {
+              {
+                /*--------Some Other Errors-------*/
+              }
+              console.log(error);
+              Alert.alert('SOMETHING ELSE WENT WRONG');
+              setError(error);
+            }
+          });
+      })
+      .catch((error) => {
+        // Google play service not available
+        Alert.alert('Google play service is not available on this device');
+      });
+    console.log('Sign IN');
+  }
+
+  function googleSignInCognitoHandler() {
+    GoogleSignin.hasPlayServices()
+      .then(() => {
+        GoogleSignin.signIn().then((userInfo) => {
+          console.log('userInfo', userInfo);
+          Auth.federatedSignIn(
+            'google',
+            {
+              token: userInfo.idToken,
+              expires_at: 60 * 1000 + new Date().getTime(), // the expiration timestamp
+            },
+            userInfo.user,
+          )
+            .then((cred) => {
+              // If success, you will get the AWS credentials
+              console.log('credentials ---->', cred);
+              return Auth.currentAuthenticatedUser();
+            })
+            .then((user) => {
+              // If success, the user object you passed in Auth.federatedSignIn
+              console.log('user after federated login -->', user);
+            })
+            .catch((e) => {
+              console.log('federated login error', e);
+            });
           idToken = userInfo.idToken; // Get the Users ID token
           console.log(userInfo);
-          // const googleCredential = auth.GoogleAuthProvider.credential(idToken); // Create a Google Credential with the Token
-          setUserInfo(userInfo);
           setError(null);
           setIsLoggedIn(true);
           storeLoginToken(idToken);
           storeUserInfo(userInfo);
           props.navigation.replace('CameraModule');
-          // return auth().signInWithCredential(googleCredential); // Sign-in the user with the Credential
-        }).catch(error => {
-          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-            {
-              /*-------When User cancel Sign In Progress-----*/
-            }
-            Alert.alert('PROCESS HAS BEEN CANCELLED');
-          } else if (error.code === statusCodes.IN_PROGRESS) {
-            {
-              /*-------When in Progress Ready-------*/
-            }
-            Alert.alert('PROCESS HAS IN PROGRESS');
-          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-            {
-              /*--------When Play Services not Available------*/
-            }
-            Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
-          } else {
-            {
-              /*--------Some Other Errors-------*/
-            }
-            console.log(error);
-            Alert.alert('SOMETHING ELSE WENT WRONG');
-            setError(error);
-          }
         });
-      }).catch(error => {
-        // Google play service not available
-        Alert.alert('Google play service is not available on this device');
+      })
+      .catch((error) => {
+        console.log('userInfo error', error);
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          {
+            /*-------When User cancel Sign In Progress-----*/
+            /*-------User Cancelled the login flow -----*/
+          }
+          Alert.alert('PROCESS HAS BEEN CANCELLED', error.code);
+          console.log('SIGN_IN_CANCELLED', error.code);
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          {
+            /*-------When in Progress Ready-------*/
+            /*----- operation (e.g. sign in) is in progress already -----*/
+          }
+          Alert.alert('PROCESS HAS IN PROGRESS', error.code);
+          console.log('IN_PROGRESS', error.code);
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+          {
+            /*--------When Play Services not Available------*/
+            /*--------play services not available or outdated ------*/
+          }
+          Alert.alert('PLAY SERVICES ARE NOT AVAILABLE', error.code);
+          console.log('PLAY_SERVICES_NOT_AVAILABLE', error.code);
+        } else {
+          {
+            /*--------Some Other Errors-------*/
+            /*-------- Some other error happened ------*/
+          }
+          console.log(error);
+          Alert.alert('SOMETHING ELSE WENT WRONG');
+          console.log('other error', error.code);
+          setError(error);
+        }
       });
-      
-    console.log('Sign IN');
   }
-
-  // const signIn = async () => {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const userInfo = await GoogleSignin.signIn();
-  //     setUserInfo(userInfo);
-  //     setError(null);
-  //     setIsLoggedIn(true);
-  //   } catch (error) {
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       {
-  //         /*-------When User cancel Sign In Progress-----*/
-  //       }
-  //       Alert.alert('PROCESS HAS BEEN CANCELLED');
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       {
-  //         /*-------When in Progress Ready-------*/
-  //       }
-  //       Alert.alert('PROCESS HAS IN PROGRESS');
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       {
-  //         /*--------When Play Services not Available------*/
-  //       }
-  //       Alert.alert('PLAY SERVICES ARE NOT AVAILABLE');
-  //     } else {
-  //       {
-  //         /*--------Some Other Errors-------*/
-  //       }
-  //       Alert.alert('SOMETHING ELSE WENT WRONG');
-  //       setError(error);
-  //     }
-  //   }
-  //   console.log('Sign IN');
-  // };
-
-  // const signOut = async () => {
-  //   try {
-  //     await GoogleSignin.revokeAccess();
-  //     await GoogleSignin.signOut();
-  //     setIsLoggedIn(false);
-  //   } catch (error) {
-  //     Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
-  //   }
-  //   console.log('Sign OUT');
-  // };
 
   async function signingOut() {
     try {
@@ -146,24 +176,6 @@ const LoginScreen = (props: any) => {
     }
     console.log('Sign OUT');
   }
-
-  // const getCurrentUserInfo = async () => {
-  //   try {
-  //     const userInfo = await GoogleSignin.signInSilently();
-  //     setUserInfo(userInfo);
-  //   } catch (error) {
-  //     if (error.code === statusCodes.SIGN_IN_REQUIRED) {
-  //       {
-  //         /*When User Has Not Sign In Yet*/
-  //       }
-  //       Alert.alert('PLEASE SIGN IN');
-  //       setIsLoggedIn(false);
-  //     } else {
-  //       Alert.alert('SOMETHING ELSE WENT WRONG', error.toString());
-  //       setIsLoggedIn(false);
-  //     }
-  //   }
-  // };
 
   const color = Colors.textWhiteaccent;
 
@@ -185,7 +197,7 @@ const LoginScreen = (props: any) => {
         color="#ffffff"
         backgroundColor="rgba(0,0,0,0.5)"
         onPress={() =>
-          Alert.alert('Apple Login Not Integrated Please Login with Google')
+          Alert.alert('Facebook Login Not Integrated Please Login with Google')
         }
       />
     );
@@ -227,7 +239,7 @@ const LoginScreen = (props: any) => {
           )}
         </View>
 
-        <View style={styles.userInfoContainer}>
+        {/* <View style={styles.userInfoContainer}>
           {isLoggedIn === true ? (
             <>
               <Text style={styles.displayTitle}>
@@ -243,7 +255,7 @@ const LoginScreen = (props: any) => {
               </View>
             </>
           ) : null}
-        </View>
+        </View> */}
 
         <View style={styles.buttonContainer}>
           <TouchableWithoutFeedback>
@@ -254,7 +266,7 @@ const LoginScreen = (props: any) => {
               color="#de4d41"
               backgroundColor="rgba(255,255,255,0.5)"
               onPress={() => {
-                signInHandler()
+                googleSignInCognitoHandler();
               }}
             />
           </TouchableWithoutFeedback>
