@@ -16,7 +16,7 @@ import Button from '../components/Button';
 
 import Colors from '../constant/Colors';
 
-import signOut from '../utils/signOut';
+import signOutHandler from '../utils/signOut';
 
 import {getUserInfo} from '../utils/StorageHelper';
 
@@ -45,13 +45,17 @@ const Profile = (props: any) => {
    }
   }*/
   }
-  getUserInfo().then((userData) => {
-    setIdtoken(userData.idToken);
-    setUserGivenName(userData.user.givenName);
-    setUserId(userData.user.id);
-    setUserName(userData.user.name);
-    setUserPhoto(userData.user.photo);
-  });
+  getUserInfo()
+    .then((userData) => {
+      setIdtoken(userData.idToken);
+      setUserGivenName(userData.user.givenName);
+      setUserId(userData.user.id);
+      setUserName(userData.user.name);
+      setUserPhoto(userData.user.photo);
+    })
+    .catch((error) => {
+      console.log('DATA HAS NOT FETCHED');
+    });
 
   const getUserProfileImage = () => {
     switch (userId) {
@@ -76,7 +80,7 @@ const Profile = (props: any) => {
       <View style={styles.headerContainer}>
         <TouchableOpacity
           activeOpacity={0.5}
-          style={{marginTop:5}}
+          style={{marginTop: 5}}
           onPress={() => props.navigation.navigate('CameraModule')}>
           {backButton}
         </TouchableOpacity>
@@ -93,7 +97,10 @@ const Profile = (props: any) => {
           imageStyle={{opacity: 0.3}}>
           <View style={styles.profileInfo}>
             <View>
-              <Image style={styles.profileImage} source={{uri: getUserProfileImage() }} />
+              <Image
+                style={styles.profileImage}
+                source={{uri: getUserProfileImage()}}
+              />
             </View>
             <Text style={styles.profileName}>{userName}</Text>
           </View>
@@ -139,7 +146,7 @@ const Profile = (props: any) => {
             color: Colors.white,
           }}
           onClickButtonHandler={() => {
-            signOut();
+            signOutHandler();
             props.navigation.navigate('LoginModule');
             props.navigation.reset({
               index: 0,
@@ -160,7 +167,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: Platform.OS === 'ios' ? 45 : 28,
     marginLeft: Platform.OS === 'ios' ? 15 : 8,
-    alignItems:'center'
+    alignItems: 'center',
   },
   headerText: {
     fontFamily: 'Raleway-Bold',
