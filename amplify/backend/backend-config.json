@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "face2focusemotional0ba7edf3": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

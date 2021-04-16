@@ -30,7 +30,7 @@ const SimpleImagePicker = (props: any) => {
         console.log('User tapped custom button: ', response.customButton);
       } else {
         let source = {uri: response.uri};
-        console.log({source});
+        console.log('******************',response);
         setImageSource(source.uri);
         props.onImagePicked(source.uri);
       }
