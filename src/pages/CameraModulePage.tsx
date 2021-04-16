@@ -24,13 +24,13 @@ const Camera = (props: any) => {
   const takePicture = async () => {
     if (camera) {
       const options = {
-        quality: 1,
-        base64: true,
+        quality: 0.1,
+        base64: false,
         mirrorImage: true,
         orientation: Platform.OS === 'android' ? 'portraitUpsideDown' : '',
       };
       const data = await camera.current.takePictureAsync(options);
-      console.log('User Picture Place Successfully : - ', data.uri);
+      console.log('User Picture Place Successfully : - ', data.uri, data, data.size);
       props.navigation.navigate('UserPictureSnap', {uri: data.uri});
     }
   };

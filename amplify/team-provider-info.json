@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-face2focusemotional-dev-124727-authRole",
+      "UnauthRoleArn": "arn:aws:iam::525576711186:role/amplify-face2focusemotional-dev-124727-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::525576711186:role/amplify-face2focusemotional-dev-124727-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-face2focusemotional-dev-124727-deployment",
+      "UnauthRoleName": "amplify-face2focusemotional-dev-124727-unauthRole",
+      "StackName": "amplify-face2focusemotional-dev-124727",
+      "StackId": "arn:aws:cloudformation:ap-south-1:525576711186:stack/amplify-face2focusemotional-dev-124727/ceffd830-9e83-11eb-b88b-0274874a440c",
+      "AmplifyAppId": "d1ipcly30vm8dl"
+    },
+    "categories": {
+      "auth": {
+        "face2focusemotional0ba7edf3": {}
+      }
+    }
+  }
+}

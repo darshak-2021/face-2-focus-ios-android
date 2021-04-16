@@ -18,8 +18,10 @@ import AudioPlayer from '../components/AudioPlayerCard';
 import getEmotionImages from '../utils/ImageGenerator';
 import getEmotionGif from '../utils/GifGenerator';
 const Meditation = (props: any) => {
-  const [emotion, setEmotion] = useState('sad');
-  const audioContent = audiosContent[emotion];
+  // const [emotion, setEmotion] = useState('sad');
+  const emotion = props.route.params.emotion;
+  console.log('****', emotion.toLowerCase())
+  const audioContent = audiosContent[emotion.toLowerCase()];
   console.log('Audio content of happy', audioContent);
   // Background Image of the Meditation Screen
   const mainresultViewBgImg = require('../assets/images/rever.jpg');
