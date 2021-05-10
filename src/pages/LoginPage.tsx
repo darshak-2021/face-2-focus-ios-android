@@ -84,7 +84,7 @@ const LoginScreen = (props: any) => {
   //               /*--------Some Other Errors-------*/
   //             }
   //             console.log(error);
-  //             Alert.alert('SOMETHING ELSE WENT WRONG');
+  //             Alert.alert('SOMETHING ELSE WENT ', `${error}`);
   //             setError(error);
   //           }
   //         });
@@ -120,6 +120,7 @@ const LoginScreen = (props: any) => {
             })
             .catch((e) => {
               console.log('federated login error', e);
+              Alert.alert('User Federatation Login Error', `${e}`)
             });
           idToken = userInfo.idToken; // Get the Users ID token
           console.log(userInfo);
