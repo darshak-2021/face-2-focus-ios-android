@@ -28,25 +28,13 @@ React-Native with TypeScript - https://reactnative.dev/docs/typescript#getting-s
 
 ### Initial Look up of React Native Application - cryptocurrency
 
-Images source - Screen Shots
-
-# android
-
-![](src/Markdown/Default-Android.png)
-
-# iOS
-
-![](src/Markdown/Default-iOS.png)
-
-## Quotation Screen
+## Quotation Slash Screen
 
 Here every time when application is loaded or Open the spiritual quotation will be change and heal your mind with positive energy.
-# android
-![](src/Markdown/Quotation-Android.png)
-# iOS
+
 ![](src/Markdown/Quotation-iOS.png)
 
-## Splash Screen for Ios
+## Splash Screen for ios
 Reference - https://www.youtube.com/watch?v=H0CC1UsvjDQ&t=149s
 To make splash screen make sure you are aware about the some native component of ios native development like some shift.
 Official - https://www.npmjs.com/package/react-native-splash-screen
@@ -59,31 +47,21 @@ Reference - https://www.youtube.com/watch?v=yFrx8HZlNtI
 ## Login Screen 
 Using Button user will log in and log out by using google firebase
 *** Functionality Remain *** 
-
-### Android
-![](src/Markdown/Login-Android.png)
-### iOS
 ![](src/Markdown/Login-iOS.png)
 
-## Home Tentative Screen View
-Home Screen will show us the how much minites you have been meditate ### Android
-![](src/Markdown/Home-Android.png)
-### iOS
-![](src/Markdown/Home-Android.png)
+## Camera Screen
+![](src/Markdown/Camera-IOS.png)
 
-## Meditation Audio List Screen
-This is the Resulting Screen which will diplay after image is been analysis base on the mood respective data will render into these same UI Screens
+## Medidation Audio List After Recogniting User Emotion Screen
+- This is the Resulting Screen which will diplay after image is been analysis base on the mood respective data will render into these same UI Screens
 
-DATA Fetching - 
-GIF - MainTitle - subTitle - AudioTitle, Image, Label, Minutes etc. for each Audio player all the content is different base on the persons mood.
-for instance, This is the Static example of Happy mood emotions.
-### Android
-
-![](src/Markdown/Meditation-Android.png)
-
-### iOS
 ![](src/Markdown/Meditation-iOS.png)
 
+## BeginSession Screen 
+![](src/Markdown/BeginSession-iOS.png)
 
+## Music Controller Screen 
+![](src/Markdown/MusicController-iOS.png)
 
-
+## User Profile Screen 
+![](src/Markdown/Profile-iOS.png)
